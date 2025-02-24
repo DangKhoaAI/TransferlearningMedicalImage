@@ -4,76 +4,101 @@ import itertools
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_confusion_matrix(cm, classes, normalize= False, title= 'Confusion Matrix', cmap= plt.cm.Blues):
-	'''
-	This function plot confusion matrix method from sklearn package.
-	'''
-
-	plt.figure(figsize= (10, 10))
-	plt.imshow(cm, interpolation= 'nearest', cmap= cmap)
-	plt.title(title)
-	plt.colorbar()
-
-	tick_marks = np.arange(len(classes))
-	plt.xticks(tick_marks, classes, rotation= 45)
-	plt.yticks(tick_marks, classes)
-
-	if normalize:
-		cm = cm.astype('float') / cm.sum(axis= 1)[:, np.newaxis]
-		print('Normalized Confusion Matrix')
-
-	else:
-		print('Confusion Matrix, Without Normalization')
-
-	print(cm)
-
-	thresh = cm.max() / 2.
-	for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-		plt.text(j, i, cm[i, j], horizontalalignment= 'center', color= 'white' if cm[i, j] > thresh else 'black')
-
-	plt.tight_layout()
-	plt.ylabel('True Label')
-	plt.xlabel('Predicted Label')
-	
-def plot_training(hist):
-    '''
-    This function take training model and plot history of accuracy and losses with the best epoch in both of them.
-    '''
-
-    # Define needed variables
-    tr_acc = hist.history['accuracy']
-    tr_loss = hist.history['loss']
-    val_acc = hist.history['val_accuracy']
-    val_loss = hist.history['val_loss']
-    index_loss = np.argmin(val_loss)
-    val_lowest = val_loss[index_loss]
-    index_acc = np.argmax(val_acc)
-    acc_highest = val_acc[index_acc]
-    Epochs = [i+1 for i in range(len(tr_acc))]
-    loss_label = f'best epoch= {str(index_loss + 1)}'
-    acc_label = f'best epoch= {str(index_acc + 1)}'
-
-    # Plot training history
-    plt.figure(figsize= (20, 8))
-    plt.style.use('fivethirtyeight')
-
-    plt.subplot(1, 2, 1)
-    plt.plot(Epochs, tr_loss, 'r', label= 'Training loss')
-    plt.plot(Epochs, val_loss, 'g', label= 'Validation loss')
-    plt.scatter(index_loss + 1, val_lowest, s= 150, c= 'blue', label= loss_label)
-    plt.title('Training and Validation Loss')
-    plt.xlabel('Epochs')
+def plot_metrics(train_losses, train_accs, val_losses, val_accs,filename='trainingprocess.png'):
+    plt.figure(figsize=(12, 5))
+    plt.subplot(1,2,1)
+    plt.plot(train_losses, marker='o', label='Train Loss')
+    plt.plot(val_losses, marker='o', label='Val Loss')
+    plt.xlabel('Epoch')
     plt.ylabel('Loss')
     plt.legend()
-
-    plt.subplot(1, 2, 2)
-    plt.plot(Epochs, tr_acc, 'r', label= 'Training Accuracy')
-    plt.plot(Epochs, val_acc, 'g', label= 'Validation Accuracy')
-    plt.scatter(index_acc + 1 , acc_highest, s= 150, c= 'blue', label= acc_label)
-    plt.title('Training and Validation Accuracy')
-    plt.xlabel('Epochs')
-    plt.ylabel('Accuracy')
+    plt.grid(True)
+    
+    plt.subplot(1,2,2)
+    plt.plot([acc*100 for acc in train_accs], marker='o', label='Train Accuracy')
+    plt.plot([acc*100 for acc in val_accs], marker='o', label='Val Accuracy')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy (%)')
     plt.legend()
-
-    plt.tight_layout
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(filename)
+    print(f"✅ Training process image saved to {filename}")
     plt.show()
+def test_model(model, test_loader):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    model.eval()
+    criterion = nn.CrossEntropyLoss()
+    total, correct, running_loss = 0, 0, 0.0
+    with torch.no_grad():
+        for inputs, labels in test_loader:
+            inputs, labels = inputs.to(device), labels.to(device)
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            running_loss += loss.item() * inputs.size(0)
+            _, preds = torch.max(outputs, 1)
+            correct += (preds == labels).sum().item()
+            total += inputs.size(0)
+    test_loss = running_loss / total
+    test_acc = (correct / total)*100
+    #print(f"Test Loss: {test_loss:.4f}, Accuracy: {test_acc*100:.2f}%")
+    return test_loss , test_acc
+
+def evaluate_model(model, data_loader, class_names, img_name='confusion-matrix.png',file_name='classificationreport.txt'):
+    """
+    Hàm này thực hiện dự đoán, tạo confusion matrix và classification report.
+    
+    Args:
+        model: Mô hình đã train.
+        data_loader: DataLoader chứa dữ liệu test.
+        class_names: Danh sách tên các lớp.
+        filename: Tên file để lưu confusion matrix.
+    """
+    # Bước 1: Predict
+    model.eval()  # Chuyển sang chế độ đánh giá
+    y_pred, y_true = [], []
+
+    with torch.no_grad():  
+        for inputs, labels in data_loader:
+            inputs, labels = inputs.to(device), labels.to(device)  # Chuyển về GPU nếu có
+            
+            outputs = model(inputs)  # Dự đoán logits
+            preds = torch.argmax(outputs, dim=1)  # Lấy class có xác suất cao nhất
+
+            y_pred.extend(preds.cpu().numpy())
+            y_true.extend(labels.cpu().numpy())
+    
+    # Bước 2: Tạo confusion matrix
+    cm = sklearn.metrics.confusion_matrix(y_true, y_pred)
+    
+    plt.figure(figsize=(10, 10))
+    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+    plt.title('Confusion Matrix')
+    plt.colorbar()
+    
+    tick_marks = np.arange(len(class_names))
+    plt.xticks(tick_marks, class_names, rotation=45)
+    plt.yticks(tick_marks, class_names)
+    
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, f"{cm[i, j]}", horizontalalignment='center', 
+                 color='white' if cm[i, j] > thresh else 'black')
+    
+    plt.ylabel('True Label')
+    plt.xlabel('Predicted Label')
+    plt.tight_layout()
+    plt.savefig(img_name)
+    print(f"✅ Confusion matrix image saved to {img_name}")
+    plt.show() 
+    # Bước 3: In classification report
+    report = sklearn.metrics.classification_report(y_true, y_pred, target_names=class_names)
+    print(report)
+    with open(file_name, "w") as f:
+        f.write("Confusion Matrix:\n")
+        f.write(np.array2string(cm) + "\n")
+        f.write("\nClassification Report:\n")
+        f.write(report) 
+    print(f"✅ Classification report saved to {file_name}")
+    return y_pred, cm, report
