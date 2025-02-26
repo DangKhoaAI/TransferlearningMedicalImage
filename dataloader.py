@@ -3,6 +3,7 @@ from timm.data import resolve_model_data_config
 from timm.data.transforms_factory import create_transform
 from torchvision import datasets
 from torch.utils.data import DataLoader, random_split
+import torch 
 # -------------------------
 # 1. Chuẩn bị transform
 # -------------------------

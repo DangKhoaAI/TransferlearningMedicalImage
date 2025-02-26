@@ -1,9 +1,8 @@
 import torch
 import torch.nn as nn
-import timm
+import torch.optim as optim
 import copy
 import time
-from torch.utils.data import DataLoader
 def train_model(model, train_loader, val_loader, device, num_epochs=10, 
                 threshold=0.9, lr_patience=2, stop_patience=4, factor=0.5):
     """

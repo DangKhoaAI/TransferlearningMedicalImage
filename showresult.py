@@ -1,8 +1,10 @@
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
-import itertools
+import torch
+import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
+import itertools
+import sklearn.metrics  # Chứa confusion_matrix, classification_report
+
 
 def plot_metrics(train_losses, train_accs, val_losses, val_accs,filename='trainingprocess.png'):
     plt.figure(figsize=(12, 5))

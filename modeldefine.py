@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import timm
+
 class MyModel(nn.Module):
     def __init__(self, base_model, num_classes):
         super(MyModel, self).__init__()
