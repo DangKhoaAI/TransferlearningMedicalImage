@@ -1,0 +1,19 @@
+#### **1. Dataset: COVID**
+   - COVID - DenseNet : Early stopping Total training time: 0h 4m 26.70s .Best model from epoch 4 restored.
+   - COVID - ResNet :  Early stopping ,Total training time: 0h 4m 27.82s . Best model from epoch 12 restored. 
+   - COVID - ConvNeXt  : Early stopping ,Total training time: 0h 15m 6.42s .Best model from epoch 11 restored
+   - COVID - ViT : Early stopping: Total training time: 0h 4m 25.47s . Best model from epoch 10 restored.
+   - COVID - ViT+ : Early stopping: Total training time: 0h 4m 41.67s . Best model from epoch 8 restored.
+#### **2. Dataset: Lung**
+   - Lung - DenseNet :Early Stopping, Total training time: 0h 16m 18.43s .Best model from epoch 6 restored.
+   - Lung  - ResNet : Early Stopping Total training time: 0h 10m 41.88s .Best model from epoch 4 restored.
+   - Lung - ConvNeXt  : Total training time: 0h 45m 29.27s .Best model from epoch 10 restored.
+   - Lung - ViT : Total training time: 0h 13m 57.55sBest model from epoch 9 restored.
+   - Lung - ViT+ : Total training time: 0h 13m 52.79s .Best model from epoch 7 restored.
+#### **3. Dataset: Brain**
+   - Brain - ResNet : Early Stopiing, Total training time: 0h 4m 34.14s .Best model from epoch 5 restored.
+   - Brain - DenseNet  : Total training time: 0h 8m 12.06s .Best model from epoch 10 restored.
+   - Brain - ConvNeXt :   Total training time: 0h 18m 20.54sBest model from epoch 10 restored.
+   - Brain - ViT : Total training time: 0h 5m 40.23s .Best model from epoch 8 restored.
+   - Brain - ViT+ :Total training time: 0h 5m 39.94s .Best model from epoch 9 restored.
+ViT+(reduce lr=1e-5)

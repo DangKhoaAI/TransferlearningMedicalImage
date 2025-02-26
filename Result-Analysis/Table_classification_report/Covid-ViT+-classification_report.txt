@@ -1,0 +1,13 @@
+Confusion Matrix:
+[[118   5]
+ [  9 117]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       COVID       0.93      0.96      0.94       123
+   non-COVID       0.96      0.93      0.94       126
+
+    accuracy                           0.94       249
+   macro avg       0.94      0.94      0.94       249
+weighted avg       0.94      0.94      0.94       249

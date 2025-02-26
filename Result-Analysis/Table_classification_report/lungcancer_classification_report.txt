@@ -1,0 +1,6 @@
+   Model  Precision  Recall  F1-score
+ConvNeXt       1.00    1.00      1.00
+DenseNet       1.00    1.00      1.00
+  ResNet       1.00    1.00      1.00
+     ViT       0.98    0.98      0.98
+    ViT+       1.00    1.00      1.00

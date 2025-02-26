@@ -1,0 +1,17 @@
+Confusion Matrix:
+[[230  62   2   6]
+ [ 16 243  34  13]
+ [  1   0 401   3]
+ [  1  12   0 287]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+      glioma       0.93      0.77      0.84       300
+  meningioma       0.77      0.79      0.78       306
+     notumor       0.92      0.99      0.95       405
+   pituitary       0.93      0.96      0.94       300
+
+    accuracy                           0.89      1311
+   macro avg       0.89      0.88      0.88      1311
+weighted avg       0.89      0.89      0.88      1311
