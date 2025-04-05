@@ -1,0 +1,23 @@
+=== COVID Dataset ===
+   Model  Precision  Recall  F1-score
+ConvNeXt       0.97    0.97      0.97
+DenseNet       0.98    0.98      0.98
+  ResNet       0.97    0.97      0.97
+     ViT       0.93    0.91      0.91
+    ViT*       0.94    0.94      0.94
+
+=== Lung Cancer Dataset ===
+   Model  Precision  Recall  F1-score
+ConvNeXt       1.00    1.00      1.00
+DenseNet       1.00    1.00      1.00
+  ResNet       1.00    1.00      1.00
+     ViT       0.98    0.98      0.98
+    ViT*       1.00    1.00      1.00
+
+=== Brain Tumor Dataset ===
+   Model  Precision  Recall  F1-score
+ConvNeXt       0.99    0.99      0.99
+DenseNet       0.99    0.99      0.99
+  ResNet       0.98    0.98      0.98
+     ViT       0.89    0.88      0.88
+    ViT*       0.98    0.98      0.98

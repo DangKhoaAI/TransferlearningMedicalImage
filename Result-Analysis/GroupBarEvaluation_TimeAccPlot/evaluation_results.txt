@@ -1,0 +1,144 @@
+
+Comparison of Accuracy Among Models on the SARS-COV-2 Dataset
+=============================================================
+
+Model: ConvNeXt
+  Train Loss        : 0.0104
+  Train Accuracy    : 99.65%
+  Validation Loss   : 0.0894
+  Validation Accuracy: 97.18%
+  Test Loss         : 0.0595
+  Test Accuracy     : 97.19%
+----------------------------------------
+
+Model: DenseNet
+  Train Loss        : 0.0022
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.0422
+  Validation Accuracy: 98.39%
+  Test Loss         : 0.0795
+  Test Accuracy     : 97.99%
+----------------------------------------
+
+Model: ResNet
+  Train Loss        : 0.0007
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.0301
+  Validation Accuracy: 99.19%
+  Test Loss         : 0.1135
+  Test Accuracy     : 96.79%
+----------------------------------------
+
+Model: ViT
+  Train Loss        : 0.1552
+  Train Accuracy    : 94.35%
+  Validation Loss   : 0.3152
+  Validation Accuracy: 86.69%
+  Test Loss         : 0.2468
+  Test Accuracy     : 91.57%
+----------------------------------------
+
+Model: ViT*
+  Train Loss        : 0.0153
+  Train Accuracy    : 99.9%
+  Validation Loss   : 0.1562
+  Validation Accuracy: 93.55%
+  Test Loss         : 0.1657
+  Test Accuracy     : 94.38%
+----------------------------------------
+
+Comparison of Accuracy Among Models on the Lungcancer Dataset
+=============================================================
+
+Model: ConvNeXt
+  Train Loss        : 0.0
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.0004
+  Validation Accuracy: 100.0%
+  Test Loss         : 0.0001
+  Test Accuracy     : 100.0%
+----------------------------------------
+
+Model: DenseNet
+  Train Loss        : 0.0001
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.0001
+  Validation Accuracy: 100.0%
+  Test Loss         : 0.0004
+  Test Accuracy     : 100.0%
+----------------------------------------
+
+Model: ResNet
+  Train Loss        : 0.002
+  Train Accuracy    : 99.95%
+  Validation Loss   : 0.004
+  Validation Accuracy: 99.93%
+  Test Loss         : 0.0059
+  Test Accuracy     : 99.73%
+----------------------------------------
+
+Model: ViT
+  Train Loss        : 0.002
+  Train Accuracy    : 99.94%
+  Validation Loss   : 0.0344
+  Validation Accuracy: 98.87%
+  Test Loss         : 0.0435
+  Test Accuracy     : 98.4%
+----------------------------------------
+
+Model: ViT*
+  Train Loss        : 0.0002
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.004
+  Validation Accuracy: 99.87%
+  Test Loss         : 0.0082
+  Test Accuracy     : 99.73%
+----------------------------------------
+
+Comparison of Accuracy Among Models on the Brain Tumor MRI Dataset
+==================================================================
+
+Model: ConvNeXt
+  Train Loss        : 0.0009
+  Train Accuracy    : 99.96%
+  Validation Loss   : 0.0191
+  Validation Accuracy: 99.53%
+  Test Loss         : 0.0406
+  Test Accuracy     : 99.16%
+----------------------------------------
+
+Model: DenseNet
+  Train Loss        : 0.0001
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.0224
+  Validation Accuracy: 99.42%
+  Test Loss         : 0.0276
+  Test Accuracy     : 99.47%
+----------------------------------------
+
+Model: ResNet
+  Train Loss        : 0.0055
+  Train Accuracy    : 99.98%
+  Validation Loss   : 0.0997
+  Validation Accuracy: 97.32%
+  Test Loss         : 0.0687
+  Test Accuracy     : 98.55%
+----------------------------------------
+
+Model: ViT
+  Train Loss        : 0.0565
+  Train Accuracy    : 98.13%
+  Validation Loss   : 0.2452
+  Validation Accuracy: 92.53%
+  Test Loss         : 0.2951
+  Test Accuracy     : 88.56%
+----------------------------------------
+
+Model: ViT*
+  Train Loss        : 0.0046
+  Train Accuracy    : 100.0%
+  Validation Loss   : 0.0527
+  Validation Accuracy: 98.48%
+  Test Loss         : 0.0535
+  Test Accuracy     : 98.4%
+----------------------------------------
