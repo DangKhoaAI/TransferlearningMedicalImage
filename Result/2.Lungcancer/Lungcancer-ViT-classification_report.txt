@@ -1,0 +1,15 @@
+Confusion Matrix:
+[[495   0   7]
+ [  0 505   0]
+ [ 17   0 476]]
+
+Classification Report:
+                         precision    recall  f1-score   support
+
+         adenocarcinoma       0.97      0.99      0.98       502
+                 benign       1.00      1.00      1.00       505
+squamous_cell_carcinoma       0.99      0.97      0.98       493
+
+               accuracy                           0.98      1500
+              macro avg       0.98      0.98      0.98      1500
+           weighted avg       0.98      0.98      0.98      1500
