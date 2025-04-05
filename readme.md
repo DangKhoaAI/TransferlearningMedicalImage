@@ -16,6 +16,6 @@ The models used in this research:
 ## Datasets
 Three medical image datasets are used:
 1. **COVID Dataset**: 2.5k images, 2 classes
-2. **Lung Cancer Dataset**: 15k images, 3 classes
+2. **BreaKHis Dataset**: 1.5k images, 2 classes
 3. **Brain Tumor Dataset**: 7k images, 4 classes
 
